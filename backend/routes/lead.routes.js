@@ -82,6 +82,31 @@ return res.status(201).json({
   }
 });
 
+//Fetches all comments for a specific lead.
+router.get("/:id/comments", async (req,res) =>{
+  try{
+    const {id} = req.params
+    const lead = await Lead.findById(id)
+
+    if(!lead){
+      return res.status(404).json({
+        success:false,
+        message: "Lead not found"
+      })
+    }
+    const comments = await Comment.find({lead: id}).populate('author', 'name')
+    return res.status(200).json({
+      success: true,
+       count: comments.length,
+       comments
+    })
+  }catch(e){
+    return res.status(500).json({
+      success: false,
+      message: e.message
+    })
+  }
+})
 
 // Get all leads with optional filters
 

@@ -31,4 +31,28 @@ router.post("/", async (req, res) => {
   }
 });
 
+
+router.get("/", async (req,res) =>{
+  try{
+      const allAgents = await SalesAgent.find()
+
+      if(allAgents.length === 0){
+        return res.status(404).json({
+          message:"No agents found!"
+        })
+      }
+
+      res.status(200).json({
+        message: "Data fetch successfully",   
+        success: true,
+        data: allAgents
+      })
+  }catch(e) {
+    return res.status(500).json({
+        success: false,
+  message: "Internal Server Error",
+  error: e.message
+    });
+  }
+})
 module.exports = router;
