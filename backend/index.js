@@ -17,11 +17,12 @@ dns.setServers(["1.1.1.1","8.8.8.8"])
 const salesAgent = require("./routes/salesAgent.routes")
 const lead = require("./routes/lead.routes")
 const report = require("./routes/report.routes")
-
+const tag = require("./routes/tag.routes")
 
 app.use("/api/agents",salesAgent)
 app.use("/api/leads",lead)
 app.use("/api/report",report)
+app.use("/api/tags",tag)
 
 
 const PORT = process.env.PORT || 3000
