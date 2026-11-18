@@ -60,6 +60,16 @@ export const LeadDetailsProvider = ({ children }) => {
     try {
       const res = await addComment(leadId, commentPayload);
       const newComment = res?.data || commentPayload;
+      // Re-fetch populated comments so the author object is fully populated from server
+      try {
+        const fresh = await getComments(leadId);
+        if (Array.isArray(fresh)) {
+          setComments(fresh);
+          return newComment;
+        }
+      } catch (e) {
+        // Fallback to local append if re-fetch fails
+      }
       setComments((prev) => [...prev, newComment]);
       return newComment;
     } catch (err) {

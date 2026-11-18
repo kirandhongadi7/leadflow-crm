@@ -104,6 +104,14 @@ const LeadDetails = () => {
     }
   };
 
+  // Helper to get comment author's display name
+  const getAuthorName = (author) => {
+    if (!author) return 'Anonymous';
+    if (typeof author === 'object' && author.name) return author.name;
+    const match = agents.find((a) => a._id === author);
+    return match ? match.name : author;
+  };
+
   // Add Comment
   const handleAddComment = async (e) => {
     e.preventDefault();
@@ -455,7 +463,7 @@ const LeadDetails = () => {
                     <div key={c._id || idx} className="p-3 bg-light rounded border">
                       <div className="d-flex justify-content-between align-items-center mb-1">
                         <strong className="text-dark small">
-                          👤 {c.author?.name || c.author || 'Anonymous'}
+                          👤 {getAuthorName(c.author)}
                         </strong>
                         <span className="text-muted small" style={{ fontSize: '0.75rem' }}>
                           {c.createdAt
