@@ -57,26 +57,19 @@ export const LeadDetailsProvider = ({ children }) => {
 
   // Add comment to lead
   const addNewComment = useCallback(async (leadId, commentPayload) => {
-    try {
-      const res = await addComment(leadId, commentPayload);
-      const newComment = res?.data || commentPayload;
-      // Re-fetch populated comments so the author object is fully populated from server
-      try {
-        const fresh = await getComments(leadId);
-        if (Array.isArray(fresh)) {
-          setComments(fresh);
-          return newComment;
-        }
-      } catch (e) {
-        // Fallback to local append if re-fetch fails
-      }
-      setComments((prev) => [...prev, newComment]);
-      return newComment;
-    } catch (err) {
-      console.error('LeadDetailsContext: Error posting comment', err);
-      throw err;
-    }
-  }, []);
+  try {
+    const res = await addComment(leadId, commentPayload);
+
+    const newComment = res.data;
+
+    setComments((prev) => [...prev, newComment]);
+
+    return newComment;
+  } catch (err) {
+    console.error("Error posting comment:", err);
+    throw err;
+  }
+}, []);
 
   // Reset
   const clearCurrentLead = useCallback(() => {
