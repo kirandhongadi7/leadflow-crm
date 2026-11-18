@@ -4,17 +4,29 @@ const cors = require("cors");
 const { initializeDatabase } = require("./db/db.connect");
 
 // CORS Configuration
-const corsOptions = {
-  origin: "*",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
+// Using `origin: true` dynamically reflects the requesting origin (e.g. your Vercel frontend),
+// which prevents browser CORS errors when credentials or custom headers are used.
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+// Handle preflight OPTIONS immediately before any database or route middleware
+app.options("*", cors());
 
 app.use(express.json());
-app.use(cors(corsOptions));
 
 // Database middleware: Ensures MongoDB connection is ready before processing any request
 app.use(async (req, res, next) => {
+  // Skip DB initialization for preflight OPTIONS requests
+  if (req.method === "OPTIONS") {
+    return next();
+  }
+
   try {
     await initializeDatabase();
     next();
