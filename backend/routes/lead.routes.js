@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 const Lead = require("../modules/leadSchema.module");
-const Comment = require("../modules/commentSchema.module")
+const Comment = require("../modules/commentSchema.module");
+const SalesAgent = require("../modules/salesAgentSchema.module");
 router.post("/", async (req, res) => {
   try {
     const {
@@ -64,16 +65,33 @@ router.post("/:id/comments", async (req, res) => {
       });
     }
 
-const newComment = await Comment.create({
-  author,
-  commentText,
-  lead: id
-});
+    let authorId = author;
+    // If author is not a valid ObjectId (e.g. someone passed name "John Doe"), find agent by name
+    if (!mongoose.Types.ObjectId.isValid(author)) {
+      const agent = await SalesAgent.findOne({
+        name: { $regex: new RegExp(`^${author.trim()}$`, "i") }
+      });
+      if (agent) {
+        authorId = agent._id;
+      } else {
+        return res.status(400).json({
+          message: `Author "${author}" is not a valid ObjectId and was not found in Sales Agents. Please select a valid Sales Agent.`
+        });
+      }
+    }
 
-return res.status(201).json({
-  message: "Comment added successfully",
-  data: newComment
-});
+    const newComment = await Comment.create({
+      author: authorId,
+      commentText,
+      lead: id
+    });
+
+    const populatedComment = await Comment.findById(newComment._id).populate('author', 'name');
+
+    return res.status(201).json({
+      message: "Comment added successfully",
+      data: populatedComment
+    });
 
   } catch (e) {
     return res.status(500).json({

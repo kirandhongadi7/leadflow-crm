@@ -54,6 +54,13 @@ const LeadDetails = () => {
         timeToClose: currentLead.timeToClose || 30,
         priority: currentLead.priority || 'Medium',
       });
+
+      // Pre-select comment author to assigned agent if available
+      if (currentLead.salesAgent?._id) {
+        setCommentAuthor(currentLead.salesAgent._id);
+      } else if (typeof currentLead.salesAgent === 'string' && currentLead.salesAgent) {
+        setCommentAuthor(currentLead.salesAgent);
+      }
     }
   }, [currentLead]);
 
@@ -401,14 +408,19 @@ const LeadDetails = () => {
               {/* Add Comment Form */}
               <form onSubmit={handleAddComment} className="mb-4 pb-3 border-bottom">
                 <div className="mb-2">
-                  <input
-                    type="text"
-                    className="form-control form-control-sm"
-                    placeholder="Your Name (Author)"
+                  <select
+                    className="form-select form-select-sm"
                     value={commentAuthor}
                     onChange={(e) => setCommentAuthor(e.target.value)}
                     required
-                  />
+                  >
+                    <option value="">-- Select Author (Sales Agent) --</option>
+                    {agents.map((agent) => (
+                      <option key={agent._id} value={agent._id}>
+                        👤 {agent.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="mb-2">
                   <textarea
