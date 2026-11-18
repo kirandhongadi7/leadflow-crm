@@ -109,7 +109,6 @@ router.get("/:id/comments", async (req,res) =>{
 })
 
 // Get all leads with optional filters
-
 router.get("/", async (req, res) => {
   try {
     const { salesAgent, status, tags, source } = req.query;
@@ -140,7 +139,21 @@ router.get("/", async (req, res) => {
   }
 });
 
-
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid input: 'id' must be a valid ObjectId." });
+    }
+    const lead = await Lead.findById(id).populate('salesAgent', '_id name');
+    if (!lead) {
+      return res.status(404).json({ error: "Lead not found." });
+    }
+    return res.status(200).json(lead);
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
+  }
+});
 
 // Update a lead by ID
 router.put("/:id", async (req, res) => {

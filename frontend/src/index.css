@@ -1,0 +1,62 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar-crm {
+  background-color: #183D32 !important;
+  box-shadow: 0 4px 12px rgba(24, 61, 50, 0.1);
+}
+.navbar-crm .navbar-brand {
+  color: #FFFFFF !important;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-badge {
+  background-color: #8BAE9A;
+  color: #183D32;
+  font-weight: 800;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+}
+
+.navbar-crm .nav-link {
+  color: #e2ede7 !important;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem !important;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.navbar-crm .nav-link:hover {
+  color: #FFFFFF !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-crm .nav-link.active {
+  background-color: #8BAE9A !important;
+  color: #183D32 !important;
+  font-weight: 600;
+}
+
+
+/* Button */
+.btn-accent {
+  background-color: #8BAE9A !important;
+  border-color: #8BAE9A !important;
+  color: #183D32 !important;
+  font-weight: 600;
+}
