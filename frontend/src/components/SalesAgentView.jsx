@@ -120,11 +120,14 @@ const SalesAgentView = () => {
       {/* Header */}
       <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
         <div>
-          <h2 className="fw-bold mb-1">👥 Sales Agent Workload & Performance</h2>
+          <h2 className="fw-bold mb-1">Sales Agent Workload & Performance</h2>
           <p className="text-muted mb-0">
             Monitor pipeline distribution and deals managed by individual sales agents.
           </p>
         </div>
+        <Link to="/sales-agent/new" className="btn btn-primary fw-semibold px-3 py-2 shadow-sm">
+          Add Sales Agent
+        </Link>
       </div>
 
       {/* Toolbar / Filters */}
@@ -221,7 +224,7 @@ const SalesAgentView = () => {
                   {/* Agent Header */}
                   <div className="card-header bg-white py-3 border-bottom">
                     <div className="d-flex justify-content-between align-items-center mb-1">
-                      <h5 className="fw-bold mb-0 text-dark">👤 {agent.name}</h5>
+                      <h5 className="fw-bold mb-0 text-dark">{agent.name}</h5>
                       <span className="badge bg-dark rounded-pill">
                         {agentLeads.length} Total
                       </span>
@@ -270,7 +273,7 @@ const SalesAgentView = () => {
                             <span className={`badge ${getStatusBadge(lead.status)}`}>
                               {lead.status}
                             </span>
-                            <span>⏱️ {lead.timeToClose}d</span>
+                            <span>{lead.timeToClose}d</span>
                           </div>
 
                           {lead.tags && lead.tags.length > 0 && (

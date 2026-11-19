@@ -180,10 +180,10 @@ const LeadDetails = () => {
             className={`btn ${isEditing ? 'btn-secondary' : 'btn-primary'} fw-semibold`}
             onClick={() => setIsEditing(!isEditing)}
           >
-            {isEditing ? 'Cancel Edit' : '✏️ Edit Lead'}
+            {isEditing ? 'Cancel Edit' : 'Edit Lead'}
           </button>
           <button className="btn btn-outline-danger fw-semibold" onClick={handleDeleteLead}>
-            🗑️ Delete
+            Delete
           </button>
         </div>
       </div>
@@ -195,7 +195,7 @@ const LeadDetails = () => {
             /* Update Form */
             <div className="card shadow-sm border-0">
               <div className="card-header bg-primary text-white py-3">
-                <h5 className="mb-0">✏️ Update Lead Details</h5>
+                <h5 className="mb-0">Update Lead Details</h5>
               </div>
               <div className="card-body p-4">
                 <form onSubmit={handleUpdateSubmit}>
@@ -345,7 +345,7 @@ const LeadDetails = () => {
                   <div className="col-sm-6">
                     <label className="text-muted small d-block">Assigned Sales Agent</label>
                     <span className="fw-semibold">
-                      👤 {currentLead.salesAgent?.name || 'Unassigned'}
+                      {currentLead.salesAgent?.name || 'Unassigned'}
                     </span>
                   </div>
 
@@ -372,7 +372,7 @@ const LeadDetails = () => {
                   <div className="col-sm-6">
                     <label className="text-muted small d-block">Estimated Time to Close</label>
                     <span className="fw-semibold">
-                      ⏱️ {currentLead.timeToClose} {currentLead.timeToClose === 1 ? 'day' : 'days'}
+                      {currentLead.timeToClose} {currentLead.timeToClose === 1 ? 'day' : 'days'}
                     </span>
                   </div>
 
@@ -409,7 +409,7 @@ const LeadDetails = () => {
         <div className="col-lg-5">
           <div className="card shadow-sm border-0">
             <div className="card-header bg-light py-3">
-              <h5 className="mb-0 fw-bold">💬 Comments & Updates</h5>
+              <h5 className="mb-0 fw-bold">Comments & Updates</h5>
             </div>
 
             <div className="card-body p-4">
@@ -425,7 +425,7 @@ const LeadDetails = () => {
                     <option value="">-- Select Author (Sales Agent) --</option>
                     {agents.map((agent) => (
                       <option key={agent._id} value={agent._id}>
-                        👤 {agent.name}
+                        {agent.name}
                       </option>
                     ))}
                   </select>
@@ -463,7 +463,7 @@ const LeadDetails = () => {
                     <div key={c._id || idx} className="p-3 bg-light rounded border">
                       <div className="d-flex justify-content-between align-items-center mb-1">
                         <strong className="text-dark small">
-                          👤 {getAuthorName(c.author)}
+                          {getAuthorName(c.author)}
                         </strong>
                         <span className="text-muted small" style={{ fontSize: '0.75rem' }}>
                           {c.createdAt

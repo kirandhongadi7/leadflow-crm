@@ -121,7 +121,7 @@ const Reports = () => {
     <div className="container py-4">
       {/* Page Header */}
       <div className="mb-4">
-        <h2 className="fw-bold mb-1">📊 Reports & Analytics</h2>
+        <h2 className="fw-bold mb-1">Reports & Analytics</h2>
         <p className="text-muted mb-0">
           Visual insights into closed deals, active pipeline distribution, and agent performance.
         </p>
@@ -160,7 +160,7 @@ const Reports = () => {
         <div className="col-lg-6">
           <div className="card shadow-sm border-0 h-100">
             <div className="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
-              <h5 className="fw-bold mb-0">🏆 Leads Closed Last Week</h5>
+              <h5 className="fw-bold mb-0">Leads Closed Last Week</h5>
               <span className="badge bg-success">{closedLastWeek.length} closed</span>
             </div>
             <div className="card-body p-3" style={{ height: '320px' }}>
@@ -185,7 +185,7 @@ const Reports = () => {
         <div className="col-lg-6">
           <div className="card shadow-sm border-0 h-100">
             <div className="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
-              <h5 className="fw-bold mb-0">📈 Total Leads in Pipeline</h5>
+              <h5 className="fw-bold mb-0">Total Leads in Pipeline</h5>
               <span className="badge bg-primary">{pipelineTotal} Active</span>
             </div>
             <div className="card-body p-3" style={{ height: '320px' }}>
@@ -201,7 +201,7 @@ const Reports = () => {
         <div className="col-lg-6">
           <div className="card shadow-sm border-0 h-100">
             <div className="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
-              <h5 className="fw-bold mb-0">👥 Closed Leads by Sales Agent</h5>
+              <h5 className="fw-bold mb-0">Closed Leads by Sales Agent</h5>
               <span className="badge bg-dark">Leaderboard</span>
             </div>
             <div className="card-body p-3" style={{ height: '320px' }}>
@@ -220,7 +220,7 @@ const Reports = () => {
         <div className="col-lg-6">
           <div className="card shadow-sm border-0 h-100">
             <div className="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
-              <h5 className="fw-bold mb-0">🥧 Lead Status Distribution</h5>
+              <h5 className="fw-bold mb-0">Lead Status Distribution</h5>
               <span className="badge bg-secondary">All Stages</span>
             </div>
             <div className="card-body p-3" style={{ height: '320px' }}>

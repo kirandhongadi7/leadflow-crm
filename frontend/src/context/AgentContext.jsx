@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { getSalesAgents, getTags } from '../api';
+import { getSalesAgents, createSalesAgent, getTags } from '../api';
 
 const AgentContext = createContext();
 
@@ -39,6 +39,19 @@ export const AgentProvider = ({ children }) => {
     }
   }, []);
 
+  // Add a new Sales Agent
+  const addAgent = useCallback(async (agentData) => {
+    try {
+      const res = await createSalesAgent(agentData);
+      const newAgent = res?.data || res;
+      setAgents((prev) => [...prev, newAgent]);
+      return newAgent;
+    } catch (err) {
+      console.error('AgentContext: Error creating sales agent', err);
+      throw err;
+    }
+  }, []);
+
   useEffect(() => {
     fetchAgents();
     fetchTags();
@@ -50,6 +63,7 @@ export const AgentProvider = ({ children }) => {
     loadingAgents,
     fetchAgents,
     fetchTags,
+    addAgent,
     SOURCES,
     STATUSES,
     PRIORITIES,

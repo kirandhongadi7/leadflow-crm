@@ -103,12 +103,9 @@ const LeadList = () => {
       {/* Header */}
       <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
         <div>
-          <h2 className="fw-bold mb-1">📋 All Leads</h2>
+          <h2 className="fw-bold mb-1">All Leads</h2>
           <p className="text-muted mb-0">Browse, filter, and manage your pipeline leads.</p>
         </div>
-        <Link to="/leads/new" className="btn btn-primary fw-semibold px-3 py-2 shadow-sm">
-          + Add New Lead
-        </Link>
       </div>
 
       {/* Filter and Sort Card */}
@@ -283,7 +280,7 @@ const LeadList = () => {
                     <td>
                       {lead.salesAgent?.name ? (
                         <span className="badge bg-light text-dark border">
-                          👤 {lead.salesAgent.name}
+                          {lead.salesAgent.name}
                         </span>
                       ) : (
                         <span className="text-muted small">Unassigned</span>
@@ -304,7 +301,7 @@ const LeadList = () => {
                     </td>
                     <td>
                       <span className="badge bg-light text-dark border">
-                        ⏱️ {lead.timeToClose} {lead.timeToClose === 1 ? 'day' : 'days'}
+                        {lead.timeToClose} {lead.timeToClose === 1 ? 'day' : 'days'}
                       </span>
                     </td>
                     <td>

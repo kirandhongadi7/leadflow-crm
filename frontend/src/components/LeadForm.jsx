@@ -96,7 +96,7 @@ const LeadForm = () => {
         <div className="col-lg-8">
           <div className="card shadow-sm border-0">
             <div className="card-header bg-dark text-white py-3">
-              <h4 className="mb-0">✨ Create New Lead</h4>
+              <h4 className="mb-0">Create New Lead</h4>
             </div>
 
             <div className="card-body p-4">
@@ -242,7 +242,6 @@ const LeadForm = () => {
                             isSelected ? 'btn-success text-white' : 'btn-outline-secondary'
                           }`}
                         >
-                          {isSelected ? '✓ ' : '+ '}
                           {tag}
                         </button>
                       );

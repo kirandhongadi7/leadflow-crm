@@ -91,13 +91,13 @@ const LeadStatusView = () => {
       {/* Header */}
       <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
         <div>
-          <h2 className="fw-bold mb-1">📌 Lead Status Board</h2>
+          <h2 className="fw-bold mb-1">Lead Status Board</h2>
           <p className="text-muted mb-0">
             Pipeline overview grouped by lead stage. Filter by agent or tags within each status.
           </p>
         </div>
         <Link to="/leads/new" className="btn btn-primary fw-semibold px-3 py-2 shadow-sm">
-          + Add Lead
+          Add Lead
         </Link>
       </div>
 
@@ -234,11 +234,11 @@ const LeadStatusView = () => {
                           </div>
 
                           <div className="small text-muted mb-2">
-                            👤 {lead.salesAgent?.name || 'Unassigned'}
+                            {lead.salesAgent?.name || 'Unassigned'}
                           </div>
 
                           <div className="d-flex justify-content-between align-items-center pt-2 border-top small text-secondary">
-                            <span>⏱️ {lead.timeToClose}d to close</span>
+                            <span>{lead.timeToClose}d to close</span>
                             <span className="badge bg-light text-secondary border">
                               {lead.source}
                             </span>

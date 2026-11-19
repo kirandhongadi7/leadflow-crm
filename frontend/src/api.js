@@ -57,6 +57,11 @@ export const getSalesAgents = async () => {
   }
 };
 
+export const createSalesAgent = async (agentData) => {
+  const res = await api.post('/agents', agentData);
+  return res.data;
+};
+
 // Tags API
 export const getTags = async () => {
   try {

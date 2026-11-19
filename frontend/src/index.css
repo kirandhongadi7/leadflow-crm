@@ -7,17 +7,15 @@ body {
   min-height: 100vh;
 }
 
-/* Navbar */
-.navbar-crm {
+/* Sidebar */
+.sidebar-crm {
+  width: 250px;
+  min-height: 100vh;
   background-color: #183D32 !important;
-  box-shadow: 0 4px 12px rgba(24, 61, 50, 0.1);
-}
-.navbar-crm .navbar-brand {
-  color: #FFFFFF !important;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  box-shadow: 2px 0 12px rgba(24, 61, 50, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
 }
 
 .brand-badge {
@@ -33,25 +31,32 @@ body {
   font-size: 1.05rem;
 }
 
-.navbar-crm .nav-link {
+.sidebar-crm .sidebar-link {
   color: #e2ede7 !important;
   font-weight: 500;
-  padding: 0.5rem 0.9rem !important;
+  padding: 0.65rem 1rem !important;
   border-radius: 6px;
   transition: all 0.2s ease;
 }
 
-.navbar-crm .nav-link:hover {
+.sidebar-crm .sidebar-link:hover {
   color: #FFFFFF !important;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.navbar-crm .nav-link.active {
+.sidebar-crm .sidebar-link.active {
   background-color: #8BAE9A !important;
   color: #183D32 !important;
   font-weight: 600;
 }
 
+.brand-header {
+  transition: opacity 0.2s;
+}
+
+.brand-header:hover {
+  opacity: 0.9;
+}
 
 /* Button */
 .btn-accent {
@@ -59,4 +64,10 @@ body {
   border-color: #8BAE9A !important;
   color: #183D32 !important;
   font-weight: 600;
+}
+
+.btn-accent:hover {
+  background-color: #7a9d8a !important;
+  border-color: #7a9d8a !important;
+  color: #183D32 !important;
 }
