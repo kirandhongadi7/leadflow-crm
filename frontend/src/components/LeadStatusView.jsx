@@ -96,9 +96,6 @@ const LeadStatusView = () => {
             Pipeline overview grouped by lead stage. Filter by agent or tags within each status.
           </p>
         </div>
-        <Link to="/leads/new" className="btn btn-primary fw-semibold px-3 py-2 shadow-sm">
-          Add Lead
-        </Link>
       </div>
 
       {/* Filter Toolbar */}
